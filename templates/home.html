@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block aside %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="card card-body h-100">
+            <h4>LM System</h4>
+            <hr>                
+            <ul>
+                <li><a href="{{ url_for('display_contracts') }}">Contracts Screen</a></li>
+                <li><a href="#">Equipment Screen</a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-9">        
+        {% if content %}
+            <h3>Contract details</h3>
+            <hr>
+            <table class="table table-hover">
+                <tr>
+                <th>Company</th>
+                <th>Account</th>
+                <th>Account Name</th>
+                <th>Address</th>
+                </tr>
+            {% for detail in content %}
+                <tr class='clickable-row'>
+                <td>{{ detail.company }}</td>
+                <td>{{ detail.account }}</td>
+                <td>{{ detail.accountname }}</td>
+                <td>{{ detail.address }}</td>
+            </tr>
+            {% endfor %}
+            </table>
+        {% else %}
+            <h3>Welcome</h3>
+        {% endif %}        
+        <hr>
+    </div>
+</div>
+<br>
+{% endblock %}
